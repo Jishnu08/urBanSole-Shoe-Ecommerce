@@ -171,26 +171,3 @@
     background-color: #0056b3;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .cart-item {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: center;
-    }
-    .cart-item .item-details {
-        width: 100%;
-        margin-bottom: 15px;
-    }
-    .cart-item .quantity-controls {
-        justify-content: center;
-        width: 100%;
-    }
-    .remove-item-btn {
-        width: 100%;
-        margin-top: 15px;
-    }
-    .cart-page-container h1 {
-        font-size: 2em;
-    }
-}

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - urBanSole</title>
+    <link rel="stylesheet" href="wishlist.css">
+    <link rel="shortcut icon" href="image/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- <section> -->
+        <nav>
+            <div class="logo">
+                <h1>urBan<span>Sole</span></h1>
+            </div>
+
+            <ul>
+                <li><a href="index.html#Home">Home</a></li>
+                <li><a href="index.html#Products">Products</a></li>
+                <li><a href="index.html#About">About</a></li>
+                <li><a href="index.html#Review">Review</a></li>
+                <li><a href="index.html#Servises">Services</a></li>
+                <li><a href="wishlist.html">Wishlist</a></li>
+            </ul>
+
+            <div class="icons">
+                <i class="fa-solid fa-heart"></i>
+                <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <i class="fa-solid fa-user"></i>
+            </div>
+        </nav>
+    <!-- </section> -->
+
+    <div class="products" id="WishlistPage">
+        <h1>Your<span>Wishlist</span></h1>
+        <div class="box" id="wishlist-products-container">
+            <p id="empty-wishlist-message"
+                style="text-align: center; color: #888; padding: 50px; font-size: 1.2em; display: none;">
+                Your wishlist is empty. Go back to <a href="index.html#Products"
+                    style="color: #007bff; text-decoration: underline;">Products</a> to add some items!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const wishlistContainer = document.getElementById('wishlist-products-container');
+            const emptyMessage = document.getElementById('empty-wishlist-message');
+            // Directly initialize likedItems from localStorage
+            let likedItems = JSON.parse(localStorage.getItem('likedShoes')) || [];
+
+            function renderWishlistItems() {
+                wishlistContainer.innerHTML = ''; // Clear existing items before re-rendering
+            if (likedItems.length === 0) {
+                emptyMessage.style.display = 'block'; // Show empty message
+            return; // Stop function if wishlist is empty
+                } else {
+                emptyMessage.style.display = 'none'; // Hide empty message
+                }
+
+                likedItems.forEach(shoe => {
+                    const card = document.createElement('div');
+            card.classList.add('card'); // Reuse your existing card styling
+
+            // Inner HTML structure similar to your product cards
+            // IMPORTANT: The data-shoe-name attribute is crucial here for removal
+            card.innerHTML = `
+            <div class="small_card">
+                <i class="fa-solid fa-heart liked" data-shoe-name="${shoe.name}"></i>
+                <i class="fa-solid fa-share"></i>
+            </div>
+            <div class="image">
+                <img src="${shoe.image}" alt="${shoe.name}">
+            </div>
+            <div class="products_text">
+                <h2>${shoe.name}</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <h3>${shoe.price}</h3>
+                <div class="products_star">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <a href="#" class="btn">Add To Cart</a>
+            </div>
+            `;
+            wishlistContainer.appendChild(card);
+                });
+
+                // Add event listeners to the heart icons IN THE WISHLIST for removal
+                document.querySelectorAll('#wishlist-products-container .card .small_card .fa-heart.liked').forEach(icon => {
+                icon.addEventListener('click', (event) => {
+                    const shoeNameToRemove = event.target.dataset.shoeName; // Get shoe name from data attribute
+
+                    // Filter out the item to be removed
+                    likedItems = likedItems.filter(item => item.name !== shoeNameToRemove);
+                    localStorage.setItem('likedShoes', JSON.stringify(likedItems)); // Update localStorage
+                    alert(`${shoeNameToRemove} removed from your wishlist!`);
+                    renderWishlistItems(); // Re-render the wishlist to show the change
+                });
+                });
+            }
+
+            renderWishlistItems(); // Call the function to render items when the page loads
+        });
+    
+    </script>
+
+    <footer>
+        <div class="footer_main">
+            <div class="tag">
+                <h1>Contact</h1>
+                <a href="#"><i class="fa-solid fa-house"></i>123/Colombo/Sri Lanka</a>
+                <a href="#"><i class="fa-solid fa-phone"></i>+94 12 345 6789</a>
+                <a href="#"><i class="fa-solid fa-envelope"></i>contact@gmail.com</a>
+            </div>
+
+            <div class="tag">
+                <h1>Get Help</h1>
+                <a href="#" class="center">FAQ</a>
+                <a href="#" class="center">Shipping</a>
+                <a href="#" class="center">Returns</a>
+                <a href="#" class="center">Payment Options</a>
+            </div>
+
+            <div class="tag">
+                <h1>Our Stores</h1>
+                <a href="#" class="center">Sri Lanka</a>
+                <a href="#" class="center">USA</a>
+                <a href="#" class="center">India</a>
+                <a href="#" class="center">Japan</a>
+            </div>
+
+            <div class="tag">
+                <h1>Follow Us</h1>
+                <div class="social_link">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="tag">
+                <h1>Newsletter</h1>
+                <div class="search_bar">
+                    <input type="text" placeholder="Your email id here">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

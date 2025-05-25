@@ -2,7 +2,7 @@
 🛍️ urBanSole – Shoe E-Commerce Website
 urBanSole is a modern, responsive, and visually engaging shoe e-commerce website built with HTML, CSS, and JavaScript. This project showcases a clean UI/UX design tailored for online footwear shopping, offering a seamless and interactive browsing experience for users.
 
-🔑 <strong>Key Features </strong> <br>
+🔑 <h1>Key Features <h1> <br>
 ->> Landing Page: Eye-catching homepage with a featured collection and brand highlights. <br>
 ->> Product Gallery: Organized shoe listings with high-quality images and minimal layout. <br>
 ->> Interactive UI: Hover effects, smooth transitions, and responsive design for all devices. <br>

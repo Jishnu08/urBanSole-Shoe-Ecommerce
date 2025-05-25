@@ -928,3 +928,274 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Not on cart.html.");
     }
 });
+
+// liked shoes
+// document.addEventListener('DOMContentLoaded', () => {
+//     const heartIcons = document.querySelectorAll('.card .small_card .fa-heart');
+//     const likedItems = JSON.parse(localStorage.getItem('likedShoes')) || [];
+
+//     // Function to update the heart icon color based on liked status
+//     const updateHeartIcon = (iconElement, isLiked) => {
+//         if (isLiked) {
+//             iconElement.style.color = 'red'; // Or any color you prefer for liked
+//         } else {
+//             iconElement.style.color = 'black'; // Or default color
+//         }
+//     };
+
+//     // Initialize heart icon colors on page load
+//     heartIcons.forEach(icon => {
+//         const card = icon.closest('.card');
+//         const shoeNameElement = card.querySelector('.products_text h2');
+//         const shoeName = shoeNameElement ? shoeNameElement.textContent.trim() : '';
+
+//         if (likedItems.includes(shoeName)) {
+//             updateHeartIcon(icon, true);
+//         }
+//     });
+
+//     heartIcons.forEach(icon => {
+//         icon.style.cursor = 'pointer'; // Make it clear it's clickable
+//         icon.addEventListener('click', (event) => {
+//             const card = event.target.closest('.card');
+//             const shoeNameElement = card.querySelector('.products_text h2');
+//             const shoeImageElement = card.querySelector('.image img');
+//             const shoePriceElement = card.querySelector('.products_text h3');
+
+//             if (!shoeNameElement || !shoeImageElement || !shoePriceElement) {
+//                 console.warn("Could not find shoe details for this card.");
+//                 return;
+//             }
+
+//             const shoeName = shoeNameElement.textContent.trim();
+//             const shoeImageSrc = shoeImageElement.src;
+//             const shoePrice = shoePriceElement.textContent.trim();
+
+//             const shoeDetails = {
+//                 name: shoeName,
+//                 image: shoeImageSrc,
+//                 price: shoePrice
+//             };
+
+//             const index = likedItems.findIndex(item => item.name === shoeDetails.name);
+
+//             if (index === -1) {
+//                 // Item is not liked, add it to likedItems
+//                 likedItems.push(shoeDetails);
+//                 updateHeartIcon(event.target, true);
+//                 alert(`${shoeName} added to your wishlist!`);
+//             } else {
+//                 // Item is already liked, remove it
+//                 likedItems.splice(index, 1);
+//                 updateHeartIcon(event.target, false);
+//                 alert(`${shoeName} removed from your wishlist!`);
+//             }
+
+//             // Save updated liked items to localStorage
+//             localStorage.setItem('likedShoes', JSON.stringify(likedItems));
+//             console.log("Current Liked Items:", likedItems);
+//         });
+//     });
+
+//     // Function for the product image changer in the "About" section
+//     window.functio = function(small) {
+//         var full = document.getElementById("imagebox");
+//         if (full && small && small.src) {
+//             full.src = small.src;
+//         }
+//     };
+// });
+// window.functio = function(small) {
+//         var full = document.getElementById("imagebox");
+//         if (full && small && small.src) {
+//             full.src = small.src;
+//         }
+//     };
+// script.js
+// document.addEventListener('DOMContentLoaded', () => {
+//     const heartIcons = document.querySelectorAll('.card .small_card .fa-heart');
+
+//     // Function to retrieve liked items from localStorage
+//     const getLikedItems = () => {
+//         return JSON.parse(localStorage.getItem('likedShoes')) || [];
+//     };
+
+//     // Function to save liked items to localStorage
+//     const saveLikedItems = (items) => {
+//         localStorage.setItem('likedShoes', JSON.stringify(items));
+//     };
+
+//     // Function to update the heart icon color based on liked status
+//     const updateHeartIcon = (iconElement, isLiked) => {
+//         if (isLiked) {
+//             iconElement.style.color = 'red'; // Or any color you prefer for liked
+//         } else {
+//             iconElement.style.color = 'black'; // Or default color
+//         }
+//     };
+
+//     // Initialize heart icon colors on page load for all product cards
+//     heartIcons.forEach(icon => {
+//         const card = icon.closest('.card');
+//         const shoeNameElement = card.querySelector('.products_text h2');
+//         const shoeName = shoeNameElement ? shoeNameElement.textContent.trim() : '';
+//         const likedItems = getLikedItems(); // Get fresh data
+
+//         const isLiked = likedItems.some(item => item.name === shoeName);
+//         updateHeartIcon(icon, isLiked);
+//     });
+
+//     // Add event listeners for heart icon clicks on product cards
+//     heartIcons.forEach(icon => {
+//         icon.style.cursor = 'pointer'; // Make it clear it's clickable
+//         icon.addEventListener('click', (event) => {
+//             const card = event.target.closest('.card');
+//             const shoeNameElement = card.querySelector('.products_text h2');
+//             const shoeImageElement = card.querySelector('.image img');
+//             const shoePriceElement = card.querySelector('.products_text h3');
+
+//             if (!shoeNameElement || !shoeImageElement || !shoePriceElement) {
+//                 console.warn("Could not find shoe details for this card.");
+//                 return;
+//             }
+
+//             const shoeName = shoeNameElement.textContent.trim();
+//             const shoeImageSrc = shoeImageElement.src;
+//             const shoePrice = shoePriceElement.textContent.trim();
+
+//             const shoeDetails = {
+//                 name: shoeName,
+//                 image: shoeImageSrc,
+//                 price: shoePrice
+//             };
+
+//             let likedItems = getLikedItems(); // Get current liked items
+
+//             const index = likedItems.findIndex(item => item.name === shoeDetails.name);
+
+//             if (index === -1) {
+//                 // Item is not liked, add it to likedItems
+//                 likedItems.push(shoeDetails);
+//                 updateHeartIcon(event.target, true);
+//                 alert(`${shoeName} added to your wishlist!`);
+//             } else {
+//                 // Item is already liked, remove it
+//                 likedItems.splice(index, 1);
+//                 updateHeartIcon(event.target, false);
+//                 alert(`${shoeName} removed from your wishlist!`);
+//             }
+
+//             saveLikedItems(likedItems); // Save updated liked items to localStorage
+//             console.log("Current Liked Items (from index.html):", likedItems);
+//         });
+//     });
+
+//     // Function for the product image changer in the "About" section
+//     // Make sure this part is also in your script.js if it's the main script for index.html
+//     window.functio = function(small) {
+//         var full = document.getElementById("imagebox");
+//         if (full && small && small.src) {
+//             full.src = small.src;
+//         }
+//     };
+// });
+// script.js (for index.html, where products are displayed)
+document.addEventListener('DOMContentLoaded', () => {
+    const heartIcons = document.querySelectorAll('.card .small_card .fa-heart');
+
+    // Function to retrieve liked items from localStorage
+    const getLikedItems = () => {
+        // Retrieve string from localStorage and parse it into a JavaScript array
+        return JSON.parse(localStorage.getItem('likedShoes')) || [];
+        // '|| []' ensures that if 'likedShoes' doesn't exist yet, it returns an empty array, not null.
+    };
+
+    // Function to save liked items to localStorage
+    const saveLikedItems = (items) => {
+        // Convert the JavaScript array into a JSON string before saving to localStorage
+        localStorage.setItem('likedShoes', JSON.stringify(items));
+    };
+
+    // Function to update the heart icon color based on liked status
+    const updateHeartIcon = (iconElement, isLiked) => {
+        if (isLiked) {
+            iconElement.style.color = 'red'; // Set to red if liked
+            iconElement.classList.add('liked'); // Add 'liked' class for CSS styling
+        } else {
+            iconElement.style.color = 'black'; // Set to default color if not liked
+            iconElement.classList.remove('liked'); // Remove 'liked' class
+        }
+    };
+
+    // Initialize heart icon colors on page load for all product cards
+    heartIcons.forEach(icon => {
+        const card = icon.closest('.card');
+        // IMPORTANT: Ensure you have an element inside your card that contains the shoe name.
+        // For example, a <h2> with the shoe name, like in the provided HTML.
+        const shoeNameElement = card.querySelector('.products_text h2');
+        const shoeName = shoeNameElement ? shoeNameElement.textContent.trim() : '';
+
+        // Only proceed if a shoe name can be found
+        if (shoeName) {
+            const likedItems = getLikedItems(); // Get fresh data
+            const isLiked = likedItems.some(item => item.name === shoeName); // Check if this shoe is in the liked list
+            updateHeartIcon(icon, isLiked); // Update its color
+        }
+    });
+
+    // Add event listeners for heart icon clicks on product cards
+    heartIcons.forEach(icon => {
+        icon.style.cursor = 'pointer'; // Make it clear it's clickable
+        icon.addEventListener('click', (event) => {
+            const card = event.target.closest('.card'); // Get the parent card element
+            const shoeNameElement = card.querySelector('.products_text h2');
+            const shoeImageElement = card.querySelector('.image img');
+            const shoePriceElement = card.querySelector('.products_text h3');
+
+            // Basic validation: ensure all necessary elements are found
+            if (!shoeNameElement || !shoeImageElement || !shoePriceElement) {
+                console.warn("Could not find all shoe details for this card. Check your HTML structure.");
+                return;
+            }
+
+            const shoeName = shoeNameElement.textContent.trim();
+            const shoeImageSrc = shoeImageElement.src;
+            const shoePrice = shoePriceElement.textContent.trim();
+
+            const shoeDetails = {
+                name: shoeName,
+                image: shoeImageSrc,
+                price: shoePrice
+            };
+
+            let likedItems = getLikedItems(); // Always get the most current state from localStorage
+
+            // Check if the shoe is already in the wishlist
+            const index = likedItems.findIndex(item => item.name === shoeDetails.name);
+
+            if (index === -1) {
+                // Item is not liked, add it to likedItems array
+                likedItems.push(shoeDetails);
+                updateHeartIcon(event.target, true); // Set heart to red
+                alert(`${shoeName} added to your wishlist!`);
+            } else {
+                // Item is already liked, remove it from likedItems array
+                likedItems.splice(index, 1); // Remove 1 item at 'index'
+                updateHeartIcon(event.target, false); // Set heart to default color
+                alert(`${shoeName} removed from your wishlist!`);
+            }
+
+            saveLikedItems(likedItems); // Save the updated array back to localStorage
+            console.log("Current Liked Items:", likedItems); // For debugging in console
+        });
+    });
+
+    // Function for the product image changer in the "About" section
+    // (Ensure this part is correctly present if you use it)
+    window.functio = function(small) {
+        var full = document.getElementById("imagebox");
+        if (full && small && small.src) {
+            full.src = small.src;
+        }
+    };
+});
